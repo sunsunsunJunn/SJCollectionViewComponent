@@ -114,13 +114,12 @@
   return imp;
 }
 
-
 - (void (^)(UICollectionView * _Nonnull, NSIndexPath * _Nonnull))sj_didSelectItemAtIndexPathBlock {
   return objc_getAssociatedObject(self, _cmd);
 }
 
 - (void)setSj_didSelectItemAtIndexPathBlock:(void (^)(UICollectionView * _Nonnull, NSIndexPath * _Nonnull))sj_didSelectItemAtIndexPathBlock {
-  objc_setAssociatedObject(self, @selector(setSj_didSelectItemAtIndexPathBlock:), sj_didSelectItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+  objc_setAssociatedObject(self, @selector(sj_didSelectItemAtIndexPathBlock), sj_didSelectItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end

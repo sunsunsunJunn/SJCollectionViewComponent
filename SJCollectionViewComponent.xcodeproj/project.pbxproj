@@ -16,10 +16,21 @@
 		046F4388240CE7820078C103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 046F4387240CE7820078C103 /* main.m */; };
 		046F4392240CE7820078C103 /* SJCollectionViewComponentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046F4391240CE7820078C103 /* SJCollectionViewComponentTests.m */; };
 		046F439D240CE7820078C103 /* SJCollectionViewComponentUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046F439C240CE7820078C103 /* SJCollectionViewComponentUITests.m */; };
-		046F43AC240CFBD60078C103 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046F43AB240CFBD60078C103 /* ExampleViewController.m */; };
 		048676D2241F62DC000D6426 /* SJCollectionViewImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676D1241F62DC000D6426 /* SJCollectionViewImplement.m */; };
 		048676D5241F64CA000D6426 /* SJCollectionViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676D4241F64CA000D6426 /* SJCollectionViewSection.m */; };
 		048676DC241F7412000D6426 /* UICollectionView+SJComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676DB241F7412000D6426 /* UICollectionView+SJComponent.m */; };
+		048676E324207302000D6426 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676E024207302000D6426 /* ExampleViewController.m */; };
+		048676EA24207361000D6426 /* TestOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676E824207361000D6426 /* TestOneCell.m */; };
+		048676EB24207361000D6426 /* TestOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048676E924207361000D6426 /* TestOneCell.xib */; };
+		048676EF242073C0000D6426 /* TestDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676EE242073C0000D6426 /* TestDataModel.m */; };
+		048676F2242073E8000D6426 /* EmampleControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676F1242073E8000D6426 /* EmampleControllerViewModel.m */; };
+		048676F5242073FB000D6426 /* TestOneCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676F4242073FB000D6426 /* TestOneCellModel.m */; };
+		048676F92420772D000D6426 /* TestTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676F72420772D000D6426 /* TestTwoCell.m */; };
+		048676FA2420772D000D6426 /* TestTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048676F82420772D000D6426 /* TestTwoCell.xib */; };
+		048676FD242077EF000D6426 /* TestTwoCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048676FC242077EF000D6426 /* TestTwoCellModel.m */; };
+		048676FF242078F8000D6426 /* TestData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 048676FE242078F8000D6426 /* TestData.plist */; };
+		0486770224207FA2000D6426 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486770124207FA1000D6426 /* TestHeaderView.m */; };
+		0486770524207FD4000D6426 /* TestHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486770424207FD4000D6426 /* TestHeaderViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +69,6 @@
 		046F4398240CE7820078C103 /* SJCollectionViewComponentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SJCollectionViewComponentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046F439C240CE7820078C103 /* SJCollectionViewComponentUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJCollectionViewComponentUITests.m; sourceTree = "<group>"; };
 		046F439E240CE7820078C103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		046F43AA240CFBD60078C103 /* ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
-		046F43AB240CFBD60078C103 /* ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		048676D0241F62DC000D6426 /* SJCollectionViewImplement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewImplement.h; sourceTree = "<group>"; };
 		048676D1241F62DC000D6426 /* SJCollectionViewImplement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJCollectionViewImplement.m; sourceTree = "<group>"; };
 		048676D3241F64CA000D6426 /* SJCollectionViewSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewSection.h; sourceTree = "<group>"; };
@@ -70,6 +79,27 @@
 		048676D9241F65EA000D6426 /* SJCollectionViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewCellProtocol.h; sourceTree = "<group>"; };
 		048676DA241F7412000D6426 /* UICollectionView+SJComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+SJComponent.h"; sourceTree = "<group>"; };
 		048676DB241F7412000D6426 /* UICollectionView+SJComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+SJComponent.m"; sourceTree = "<group>"; };
+		048676DF24207302000D6426 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		048676E024207302000D6426 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
+		048676E724207361000D6426 /* TestOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOneCell.h; sourceTree = "<group>"; };
+		048676E824207361000D6426 /* TestOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOneCell.m; sourceTree = "<group>"; };
+		048676E924207361000D6426 /* TestOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestOneCell.xib; sourceTree = "<group>"; };
+		048676ED242073C0000D6426 /* TestDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDataModel.h; sourceTree = "<group>"; };
+		048676EE242073C0000D6426 /* TestDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDataModel.m; sourceTree = "<group>"; };
+		048676F0242073E8000D6426 /* EmampleControllerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmampleControllerViewModel.h; sourceTree = "<group>"; };
+		048676F1242073E8000D6426 /* EmampleControllerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmampleControllerViewModel.m; sourceTree = "<group>"; };
+		048676F3242073FB000D6426 /* TestOneCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOneCellModel.h; sourceTree = "<group>"; };
+		048676F4242073FB000D6426 /* TestOneCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOneCellModel.m; sourceTree = "<group>"; };
+		048676F62420772D000D6426 /* TestTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTwoCell.h; sourceTree = "<group>"; };
+		048676F72420772D000D6426 /* TestTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTwoCell.m; sourceTree = "<group>"; };
+		048676F82420772D000D6426 /* TestTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTwoCell.xib; sourceTree = "<group>"; };
+		048676FB242077EF000D6426 /* TestTwoCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTwoCellModel.h; sourceTree = "<group>"; };
+		048676FC242077EF000D6426 /* TestTwoCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTwoCellModel.m; sourceTree = "<group>"; };
+		048676FE242078F8000D6426 /* TestData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestData.plist; sourceTree = "<group>"; };
+		0486770024207FA1000D6426 /* TestHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderView.h; sourceTree = "<group>"; };
+		0486770124207FA1000D6426 /* TestHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
+		0486770324207FD4000D6426 /* TestHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderViewModel.h; sourceTree = "<group>"; };
+		0486770424207FD4000D6426 /* TestHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,14 +151,13 @@
 			isa = PBXGroup;
 			children = (
 				048676CD241F62C5000D6426 /* SJCollectionViewComponent */,
+				048676DD24207302000D6426 /* Demo */,
 				046F4375240CE7800078C103 /* AppDelegate.h */,
 				046F4376240CE7800078C103 /* AppDelegate.m */,
 				046F4378240CE7800078C103 /* SceneDelegate.h */,
 				046F4379240CE7800078C103 /* SceneDelegate.m */,
 				046F437B240CE7800078C103 /* ViewController.h */,
 				046F437C240CE7800078C103 /* ViewController.m */,
-				046F43AA240CFBD60078C103 /* ExampleViewController.h */,
-				046F43AB240CFBD60078C103 /* ExampleViewController.m */,
 				046F437E240CE7800078C103 /* Main.storyboard */,
 				046F4381240CE7820078C103 /* Assets.xcassets */,
 				046F4383240CE7820078C103 /* LaunchScreen.storyboard */,
@@ -187,6 +216,66 @@
 				048676D4241F64CA000D6426 /* SJCollectionViewSection.m */,
 			);
 			path = Implement;
+			sourceTree = "<group>";
+		};
+		048676DD24207302000D6426 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				048676FE242078F8000D6426 /* TestData.plist */,
+				048676E124207302000D6426 /* Model */,
+				048676E224207302000D6426 /* View */,
+				048676DE24207302000D6426 /* Controller */,
+				048676EC24207372000D6426 /* ViewModel */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		048676DE24207302000D6426 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				048676DF24207302000D6426 /* ExampleViewController.h */,
+				048676E024207302000D6426 /* ExampleViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		048676E124207302000D6426 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				048676ED242073C0000D6426 /* TestDataModel.h */,
+				048676EE242073C0000D6426 /* TestDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		048676E224207302000D6426 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048676E724207361000D6426 /* TestOneCell.h */,
+				048676E824207361000D6426 /* TestOneCell.m */,
+				048676E924207361000D6426 /* TestOneCell.xib */,
+				048676F62420772D000D6426 /* TestTwoCell.h */,
+				048676F72420772D000D6426 /* TestTwoCell.m */,
+				048676F82420772D000D6426 /* TestTwoCell.xib */,
+				0486770024207FA1000D6426 /* TestHeaderView.h */,
+				0486770124207FA1000D6426 /* TestHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		048676EC24207372000D6426 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				048676F0242073E8000D6426 /* EmampleControllerViewModel.h */,
+				048676F1242073E8000D6426 /* EmampleControllerViewModel.m */,
+				048676F3242073FB000D6426 /* TestOneCellModel.h */,
+				048676F4242073FB000D6426 /* TestOneCellModel.m */,
+				048676FB242077EF000D6426 /* TestTwoCellModel.h */,
+				048676FC242077EF000D6426 /* TestTwoCellModel.m */,
+				0486770324207FD4000D6426 /* TestHeaderViewModel.h */,
+				0486770424207FD4000D6426 /* TestHeaderViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +382,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				046F4385240CE7820078C103 /* LaunchScreen.storyboard in Resources */,
+				048676FA2420772D000D6426 /* TestTwoCell.xib in Resources */,
+				048676FF242078F8000D6426 /* TestData.plist in Resources */,
 				046F4382240CE7820078C103 /* Assets.xcassets in Resources */,
+				048676EB24207361000D6426 /* TestOneCell.xib in Resources */,
 				046F4380240CE7800078C103 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,14 +411,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048676F5242073FB000D6426 /* TestOneCellModel.m in Sources */,
 				046F437D240CE7800078C103 /* ViewController.m in Sources */,
 				048676DC241F7412000D6426 /* UICollectionView+SJComponent.m in Sources */,
 				046F4377240CE7800078C103 /* AppDelegate.m in Sources */,
 				048676D5241F64CA000D6426 /* SJCollectionViewSection.m in Sources */,
-				046F43AC240CFBD60078C103 /* ExampleViewController.m in Sources */,
+				0486770524207FD4000D6426 /* TestHeaderViewModel.m in Sources */,
+				048676F2242073E8000D6426 /* EmampleControllerViewModel.m in Sources */,
 				048676D2241F62DC000D6426 /* SJCollectionViewImplement.m in Sources */,
+				048676E324207302000D6426 /* ExampleViewController.m in Sources */,
 				046F4388240CE7820078C103 /* main.m in Sources */,
 				046F437A240CE7800078C103 /* SceneDelegate.m in Sources */,
+				048676FD242077EF000D6426 /* TestTwoCellModel.m in Sources */,
+				048676EA24207361000D6426 /* TestOneCell.m in Sources */,
+				0486770224207FA2000D6426 /* TestHeaderView.m in Sources */,
+				048676EF242073C0000D6426 /* TestDataModel.m in Sources */,
+				048676F92420772D000D6426 /* TestTwoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -174,7 +174,7 @@
   SJCollectionViewSection *sjSection = self.sectionArray[indexPath.section];
   id<SJCollectionViewCellModelProtocol> cellModel = sjSection.rowArray[indexPath.row];
   
-  if ([cellModel respondsToSelector:@selector(sj_cellSize)]) {
+  if ([cellModel respondsToSelector:@selector(sj_cellSize)] && !CGSizeEqualToSize(cellModel.sj_cellSize, CGSizeZero)) {
     return [cellModel sj_cellSize];
   }
   
@@ -185,7 +185,7 @@
   SJCollectionViewSection *sjSection = self.sectionArray[section];
   id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel = sjSection.header;
   
-  if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)]) {
+  if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)] && !CGSizeEqualToSize(headerFooterModel.sj_headerFooterSize, CGSizeZero)) {
     return [headerFooterModel sj_headerFooterSize];
   }
   
@@ -226,11 +226,21 @@
 }
 
 - (NSString *)reuseIdentifierForCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel {
-  return NSStringFromClass([self validClassForCellModel:cellModel]);
+  NSString *identifier;
+  if (cellModel && [cellModel respondsToSelector:@selector(sj_cellReuseIdentifier)]) {
+    identifier = cellModel.sj_cellReuseIdentifier;
+  }
+  
+  return identifier ?: NSStringFromClass([self validClassForCellModel:cellModel]);
 }
 
 - (NSString *)reuseIdentifierForHeaderFooterModel:(id<SJCollectionViewHeaderFooterModelProtocol>)headerFooterModel {
-    return NSStringFromClass([self validClassForHeaderFooterModel:headerFooterModel]);
+  NSString *identifier;
+  if (headerFooterModel && [headerFooterModel respondsToSelector:@selector(sj_headerFooterReuseIdentifier)]) {
+    identifier = headerFooterModel.sj_headerFooterReuseIdentifier;
+  }
+  
+  return identifier ?: NSStringFromClass([self validClassForHeaderFooterModel:headerFooterModel]);
 }
 
 #pragma mark - getter

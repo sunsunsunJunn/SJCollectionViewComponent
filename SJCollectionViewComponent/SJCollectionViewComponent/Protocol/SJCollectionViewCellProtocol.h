@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol SJCollectionViewCellProtocol <NSObject>
 
+@optional
 
 /**
  * 传递数据给 cell (根据配置对象拿到数据更新UI)

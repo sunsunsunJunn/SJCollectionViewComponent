@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** header/footer 对应的数据模型 */
 - (id)sj_heaerFooterModel;
 
-/** header/footer 的复用标识 */
+/** sj_headerFooterClass的复用标识 不设置的话复用标识为 sj_headerFooterClass对应的string */
 - (NSString *)sj_headerFooterReuseIdentifier;
 
 @end
