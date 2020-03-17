@@ -54,7 +54,7 @@
     NSArray *rowArray = self.sectionArray[i].rowArray;
     if ([rowArray containsObject:cellModel]) {
       NSInteger rowIndex = [rowArray indexOfObject:cellModel];
-      indexPath = [NSIndexPath indexPathForRow:rowIndex inSection:i];
+      indexPath = [NSIndexPath indexPathForItem:rowIndex inSection:i];
       break;
     }
   }
