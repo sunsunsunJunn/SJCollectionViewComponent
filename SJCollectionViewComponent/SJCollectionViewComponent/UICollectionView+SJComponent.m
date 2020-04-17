@@ -11,47 +11,47 @@
 
 @implementation UICollectionView (SJComponent)
 
-- (NSMutableArray<id<SJCollectionViewCellModelProtocol>> *)sj_singleSectionRowArray {
+- (NSMutableArray<id<SJCollectionViewCellModelProtocol>> *)sj_oneSectionRowArray {
   return self.sj_firstSection.rowArray;
 }
 
-- (void)setSj_singleSectionHeader:(id<SJCollectionViewHeaderFooterModelProtocol>)sj_singleSectionHeader {
-  self.sj_firstSection.header = sj_singleSectionHeader;
+- (void)setSj_oneSectionHeader:(id<SJCollectionViewHeaderFooterModelProtocol>)sj_oneSectionHeader {
+  self.sj_firstSection.header = sj_oneSectionHeader;
 }
 
-- (id<SJCollectionViewHeaderFooterModelProtocol>)sj_singleSectionHeader {
+- (id<SJCollectionViewHeaderFooterModelProtocol>)sj_oneSectionHeader {
   return self.sj_firstSection.header;
 }
 
-- (void)setSj_singleSectionFooter:(id<SJCollectionViewHeaderFooterModelProtocol>)sj_singleSectionFooter {
-  self.sj_firstSection.footer = sj_singleSectionFooter;
+- (void)setSj_oneSectionFooter:(id<SJCollectionViewHeaderFooterModelProtocol>)sj_oneSectionFooter {
+  self.sj_firstSection.footer = sj_oneSectionFooter;
 }
 
-- (id<SJCollectionViewHeaderFooterModelProtocol>)sj_singleSectionFooter {
+- (id<SJCollectionViewHeaderFooterModelProtocol>)sj_oneSectionFooter {
   return self.sj_firstSection.footer;
 }
 
-- (void)setSj_singleSectionMinimumLineSpacing:(CGFloat)sj_singleSectionMinimumLineSpacing {
-  self.sj_firstSection.minimumLineSpacing = sj_singleSectionMinimumLineSpacing;
+- (void)setSj_oneSectionMinimumLineSpacing:(CGFloat)sj_oneSectionMinimumLineSpacing {
+  self.sj_firstSection.minimumLineSpacing = sj_oneSectionMinimumLineSpacing;
 }
 
-- (CGFloat)sj_singleSectionMinimumLineSpacing {
+- (CGFloat)sj_oneSectionMinimumLineSpacing {
   return self.sj_firstSection.minimumLineSpacing;
 }
 
-- (void)setSj_singleSectionMinimumInteritemSpacing:(CGFloat)sj_singleSectionMinimumInteritemSpacing {
-  self.sj_firstSection.minimumInteritemSpacing = sj_singleSectionMinimumInteritemSpacing;
+- (void)setSj_oneSectionMinimumInteritemSpacing:(CGFloat)sj_oneSectionMinimumInteritemSpacing {
+  self.sj_firstSection.minimumInteritemSpacing = sj_oneSectionMinimumInteritemSpacing;
 }
 
-- (CGFloat)sj_singleSectionMinimumInteritemSpacing {
+- (CGFloat)sj_oneSectionMinimumInteritemSpacing {
   return self.sj_firstSection.minimumInteritemSpacing;
 }
 
-- (void)setSj_singleSectionInset:(UIEdgeInsets)sj_singleSectionInset {
-  self.sj_firstSection.inset = sj_singleSectionInset;
+- (void)setSj_oneSectionInset:(UIEdgeInsets)sj_oneSectionInset {
+  self.sj_firstSection.inset = sj_oneSectionInset;
 }
 
-- (UIEdgeInsets)sj_singleSectionInset {
+- (UIEdgeInsets)sj_oneSectionInset {
   return self.sj_firstSection.inset;
 }
 
@@ -102,6 +102,20 @@
     }
   };
   
+  sj_collectionImplement.cellForItemAtIndexPathBlock = ^(UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+    __strong typeof(wSelf) self = wSelf;
+    if (self.sj_cellForItemAtIndexPathBlock) {
+      self.sj_cellForItemAtIndexPathBlock(cell, indexPath);
+    }
+  };
+  
+  sj_collectionImplement.scrollViewDidScrollBlock = ^(UIScrollView * _Nonnull scrollView) {
+    __strong typeof(wSelf) self = wSelf;
+    if (self.sj_scrollViewDidScrollBlock) {
+      self.sj_scrollViewDidScrollBlock(scrollView);
+    }
+  };
+  
   objc_setAssociatedObject(self, @selector(sj_collectionImplement), sj_collectionImplement, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -120,6 +134,22 @@
 
 - (void)setSj_didSelectItemAtIndexPathBlock:(void (^)(UICollectionView * _Nonnull, NSIndexPath * _Nonnull))sj_didSelectItemAtIndexPathBlock {
   objc_setAssociatedObject(self, @selector(sj_didSelectItemAtIndexPathBlock), sj_didSelectItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)(UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_cellForItemAtIndexPathBlock {
+  return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setSj_cellForItemAtIndexPathBlock:(void (^)(UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_cellForItemAtIndexPathBlock {
+  objc_setAssociatedObject(self, @selector(sj_cellForItemAtIndexPathBlock), sj_cellForItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)(UIScrollView * _Nonnull))sj_scrollViewDidScrollBlock {
+  return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setSj_scrollViewDidScrollBlock:(void (^)(UIScrollView * _Nonnull))sj_scrollViewDidScrollBlock {
+  objc_setAssociatedObject(self, @selector(sj_scrollViewDidScrollBlock), sj_scrollViewDidScrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end

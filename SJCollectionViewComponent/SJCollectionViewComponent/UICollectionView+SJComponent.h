@@ -14,22 +14,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UICollectionView (SJComponent)
 
 /** 一个 section，cell 配置数组 */
-@property (nonatomic, strong, readonly) NSMutableArray<id<SJCollectionViewCellModelProtocol>> *sj_singleSectionRowArray;
+@property (nonatomic, strong, readonly) NSMutableArray<id<SJCollectionViewCellModelProtocol>> *sj_oneSectionRowArray;
 
 /** 一个 section，header 配置 */
-@property (nonatomic, strong, nullable) id<SJCollectionViewHeaderFooterModelProtocol> sj_singleSectionHeader;
+@property (nonatomic, strong, nullable) id<SJCollectionViewHeaderFooterModelProtocol> sj_oneSectionHeader;
 
 /** 一个 section，footer 配置 */
-@property (nonatomic, strong, nullable) id<SJCollectionViewHeaderFooterModelProtocol> sj_singleSectionFooter;
+@property (nonatomic, strong, nullable) id<SJCollectionViewHeaderFooterModelProtocol> sj_oneSectionFooter;
 
 /** 一个 section，cell 间距 */
-@property (nonatomic, assign) CGFloat sj_singleSectionMinimumLineSpacing;
+@property (nonatomic, assign) CGFloat sj_oneSectionMinimumLineSpacing;
 
 /** 一个 section，cell 间距 */
-@property (nonatomic, assign) CGFloat sj_singleSectionMinimumInteritemSpacing;
+@property (nonatomic, assign) CGFloat sj_oneSectionMinimumInteritemSpacing;
 
 /** 一个 section，外边距 */
-@property (nonatomic, assign) UIEdgeInsets sj_singleSectionInset;
+@property (nonatomic, assign) UIEdgeInsets sj_oneSectionInset;
 
 /** 多个 section */
 @property (nonatomic, strong, readonly) NSMutableArray<SJCollectionViewSection *> *sj_sectionArray;
@@ -42,6 +42,16 @@ NS_ASSUME_NONNULL_BEGIN
  * collectionView 点击的回调每一个cell的回调
  */
 @property (nonatomic, copy) void(^sj_didSelectItemAtIndexPathBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
+
+/**
+ * collectionView 将要配置cell的回调
+ */
+@property (nonatomic, copy) void(^sj_cellForItemAtIndexPathBlock)(UICollectionViewCell *cell, NSIndexPath *indexPath);
+
+/**
+ * collectionView 滚动的回调
+ */
+@property (nonatomic, copy) void(^sj_scrollViewDidScrollBlock)(UIScrollView *scrollView);
 
 /**
  * 获取indexPath 对应的cellModel

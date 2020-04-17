@@ -79,11 +79,11 @@
     }
     
     // 设置数据源 一个section
-    self.collectionView.sj_singleSectionHeader = [[TestHeaderViewModel alloc] init];
-    self.collectionView.sj_singleSectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.collectionView.sj_singleSectionMinimumLineSpacing = 4;
-    self.collectionView.sj_singleSectionMinimumInteritemSpacing = 4;
-    [self.collectionView.sj_singleSectionRowArray addObjectsFromArray:viewModelArray];
+    self.collectionView.sj_oneSectionHeader = [[TestHeaderViewModel alloc] init];
+    self.collectionView.sj_oneSectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    self.collectionView.sj_oneSectionMinimumLineSpacing = 10;
+    self.collectionView.sj_oneSectionMinimumInteritemSpacing = 4;
+    [self.collectionView.sj_oneSectionRowArray addObjectsFromArray:viewModelArray];
     
     //多个section
 //    [self.collectionView.sj_sectionArray addObjectsFromArray:sectionArray];
@@ -102,6 +102,9 @@
     _collectionView.backgroundColor = UIColor.whiteColor;
     _collectionView.sj_didSelectItemAtIndexPathBlock = ^(UICollectionView * _Nonnull collectionView, NSIndexPath * _Nonnull indexPath) {
       NSLog(@"点击了第%ld个", (long)indexPath.item);
+    };
+    _collectionView.sj_scrollViewDidScrollBlock = ^(UIScrollView * _Nonnull scrollView) {
+      NSLog(@"滑动%f", scrollView.contentOffset.y);
     };
   }
   return _collectionView;

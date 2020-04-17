@@ -91,8 +91,8 @@
   
   UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
   
-  if (self.willConfigureCellAtIndexPathBlock) {
-    self.willConfigureCellAtIndexPathBlock(cell, indexPath);
+  if (self.cellForItemAtIndexPathBlock) {
+    self.cellForItemAtIndexPathBlock(cell, indexPath);
   }
   
   if ([cell conformsToProtocol:@protocol(SJCollectionViewCellProtocol)]) {
@@ -213,6 +213,14 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
   return self.sectionArray[section].inset;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  if (self.scrollViewDidScrollBlock) {
+    self.scrollViewDidScrollBlock(scrollView);
+  }
 }
 
 #pragma mark - Private Methods

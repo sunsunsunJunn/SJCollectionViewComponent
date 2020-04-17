@@ -33,12 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * collectionVIew将要配置cell的回调(可在此设置一些cell的其他属性)
  */
-@property (nonatomic, copy) void(^willConfigureCellAtIndexPathBlock)(UICollectionViewCell *cell, NSIndexPath *indexPath);
+@property (nonatomic, copy) void(^cellForItemAtIndexPathBlock)(UICollectionViewCell *cell, NSIndexPath *indexPath);
 
 /**
  * collectionView 点击的回调每一个item的回调
  */
 @property (nonatomic, copy) void(^didSelectItenAtIndexPathBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
+
+/**
+ * collectionView 滚动的回调
+ */
+@property (nonatomic, copy) void(^scrollViewDidScrollBlock)(UIScrollView *scrollView);
 
 @end
 
