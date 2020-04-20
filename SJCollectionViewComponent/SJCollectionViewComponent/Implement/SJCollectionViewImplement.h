@@ -38,7 +38,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * collectionView 点击的回调每一个item的回调
  */
-@property (nonatomic, copy) void(^didSelectItenAtIndexPathBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
+@property (nonatomic, copy) void(^didSelectItemAtIndexPathBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
+
+/**
+ * collectionView 将要出现的回调
+ */
+@property (nonatomic, copy) void(^willDisplayCellForItemAtIndexPathBlock)(UICollectionView *collectionView, UICollectionViewCell *cell, NSIndexPath *indexPath);
+
+/**
+ * collectionView 已经消失的回调
+ */
+@property (nonatomic, copy) void(^didEndDisplayingCellForItemAtIndexPathBlock)(UICollectionView *collectionView, UICollectionViewCell *cell, NSIndexPath *indexPath);
 
 /**
  * collectionView 滚动的回调

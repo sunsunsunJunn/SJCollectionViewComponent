@@ -30,6 +30,8 @@
 		048676FF242078F8000D6426 /* TestData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 048676FE242078F8000D6426 /* TestData.plist */; };
 		0486770224207FA2000D6426 /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486770124207FA1000D6426 /* TestHeaderView.m */; };
 		0486770524207FD4000D6426 /* TestHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486770424207FD4000D6426 /* TestHeaderViewModel.m */; };
+		04FCB8F8244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FCB8F7244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.m */; };
+		04FCB8FB244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FCB8FA244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,11 @@
 		0486770124207FA1000D6426 /* TestHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
 		0486770324207FD4000D6426 /* TestHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHeaderViewModel.h; sourceTree = "<group>"; };
 		0486770424207FD4000D6426 /* TestHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHeaderViewModel.m; sourceTree = "<group>"; };
+		04FCB8EE244D3668006331D8 /* SJCollectionViewComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewComponent.h; sourceTree = "<group>"; };
+		04FCB8F6244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewPlaceholderHeaderFooterModel.h; sourceTree = "<group>"; };
+		04FCB8F7244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJCollectionViewPlaceholderHeaderFooterModel.m; sourceTree = "<group>"; };
+		04FCB8F9244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCollectionViewPlaceholderHeaderFooterView.h; sourceTree = "<group>"; };
+		04FCB8FA244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJCollectionViewPlaceholderHeaderFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,8 +190,10 @@
 		048676CD241F62C5000D6426 /* SJCollectionViewComponent */ = {
 			isa = PBXGroup;
 			children = (
+				04FCB8EE244D3668006331D8 /* SJCollectionViewComponent.h */,
 				048676DA241F7412000D6426 /* UICollectionView+SJComponent.h */,
 				048676DB241F7412000D6426 /* UICollectionView+SJComponent.m */,
+				04FCB8EF244D3852006331D8 /* Default */,
 				048676CE241F62C5000D6426 /* Protocol */,
 				048676CF241F62C5000D6426 /* Implement */,
 			);
@@ -271,6 +280,17 @@
 				0486770424207FD4000D6426 /* TestHeaderViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04FCB8EF244D3852006331D8 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				04FCB8F6244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.h */,
+				04FCB8F7244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.m */,
+				04FCB8F9244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.h */,
+				04FCB8FA244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.m */,
+			);
+			path = Default;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,8 +435,10 @@
 				048676F2242073E8000D6426 /* EmampleControllerViewModel.m in Sources */,
 				048676D2241F62DC000D6426 /* SJCollectionViewImplement.m in Sources */,
 				048676E324207302000D6426 /* ExampleViewController.m in Sources */,
+				04FCB8F8244D3CCE006331D8 /* SJCollectionViewPlaceholderHeaderFooterModel.m in Sources */,
 				046F4388240CE7820078C103 /* main.m in Sources */,
 				048676FD242077EF000D6426 /* TestTwoCellModel.m in Sources */,
+				04FCB8FB244D3D94006331D8 /* SJCollectionViewPlaceholderHeaderFooterView.m in Sources */,
 				048676EA24207361000D6426 /* TestOneCell.m in Sources */,
 				0486770224207FA2000D6426 /* TestHeaderView.m in Sources */,
 				048676EF242073C0000D6426 /* TestDataModel.m in Sources */,
@@ -598,7 +620,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = SUNJUN.SJCollectionViewComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Provisioning Profile";
@@ -619,7 +641,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = SUNJUN.SJCollectionViewComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Provisioning Profile";

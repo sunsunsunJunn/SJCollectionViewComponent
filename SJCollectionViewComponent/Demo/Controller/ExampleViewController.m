@@ -12,6 +12,7 @@
 #import "TestOneCellModel.h"
 #import "TestTwoCellModel.h"
 #import "TestHeaderViewModel.h"
+#import "SJCollectionViewPlaceholderHeaderFooterModel.h"
 
 @interface ExampleViewController ()
 
@@ -79,7 +80,11 @@
     }
     
     // 设置数据源 一个section
-    self.collectionView.sj_oneSectionHeader = [[TestHeaderViewModel alloc] init];
+    SJCollectionViewPlaceholderHeaderFooterModel *headerModel = [[SJCollectionViewPlaceholderHeaderFooterModel alloc] init];
+    headerModel.backgroundColor = [UIColor blueColor];
+    headerModel.size = CGSizeMake(self.view.bounds.size.width, 20);
+    self.collectionView.sj_oneSectionHeader = headerModel;
+    self.collectionView.sj_oneSectionFooter = [[TestHeaderViewModel alloc] init];
     self.collectionView.sj_oneSectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.collectionView.sj_oneSectionMinimumLineSpacing = 10;
     self.collectionView.sj_oneSectionMinimumInteritemSpacing = 4;

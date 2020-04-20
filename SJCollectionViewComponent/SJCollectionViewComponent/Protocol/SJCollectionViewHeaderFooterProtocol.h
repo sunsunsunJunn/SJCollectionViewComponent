@@ -6,6 +6,7 @@
 //  Copyright © 2020 SUNJUN. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 @protocol SJCollectionViewHeaderFooterModelProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
  * collectionView HeaderFooter 配置协议
  */
 @protocol SJCollectionViewHeaderFooterProtocol <NSObject>
+
+@optional
 
 /**
  * 传递数据给 header/footer (根据配置对象拿到数据更新UI)

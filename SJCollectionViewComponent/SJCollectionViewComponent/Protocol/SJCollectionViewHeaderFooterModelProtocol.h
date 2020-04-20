@@ -6,7 +6,8 @@
 //  Copyright © 2020 SUNJUN. All rights reserved.
 //
 
-#import "SJCollectionViewHeaderFooterProtocol.h"
+#import <Foundation/Foundation.h>
+@protocol SJCollectionViewHeaderFooterProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** header/footer 类类型 */
 - (Class<SJCollectionViewHeaderFooterProtocol>)sj_headerFooterClass;
 
+/** header/footer 大小 */
 - (CGSize)sj_headerFooterSize;
 
 @optional

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SJCollectionViewHeaderFooterModelProtocol.h"
+#import "SJCollectionViewHeaderFooterProtocol.h"
 #import "SJCollectionViewCellModelProtocol.h"
+#import "SJCollectionViewCellProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

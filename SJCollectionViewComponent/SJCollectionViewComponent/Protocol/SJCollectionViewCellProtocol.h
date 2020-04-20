@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol SJCollectionViewCellModelProtocol;
 @class SJCollectionViewSection;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  * collectionView Cell 配置协议

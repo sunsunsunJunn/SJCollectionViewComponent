@@ -54,6 +54,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void(^sj_scrollViewDidScrollBlock)(UIScrollView *scrollView);
 
 /**
+ * collectionView 将要出现的回调
+ */
+@property (nonatomic, copy) void(^sj_willDisplayCellForItemAtIndexPathBlock)(UICollectionView *collectionView, UICollectionViewCell *cell, NSIndexPath *indexPath);
+
+/**
+ * collectionView 已经消失的回调
+ */
+@property (nonatomic, copy) void(^sj_didEndDisplayingCellForItemAtIndexPathBlock)(UICollectionView *collectionView, UICollectionViewCell *cell, NSIndexPath *indexPath);
+
+/**
  * 获取indexPath 对应的cellModel
  */
 - (id<SJCollectionViewCellModelProtocol>)cellModelForIndexPath:(NSIndexPath *)indexPath;

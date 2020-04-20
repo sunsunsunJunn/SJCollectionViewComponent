@@ -95,7 +95,7 @@
   self.dataSource = sj_collectionImplement;
   
   __weak typeof(self) wSelf = self;
-  sj_collectionImplement.didSelectItenAtIndexPathBlock = ^(UICollectionView * _Nonnull collectionView, NSIndexPath * _Nonnull indexPath) {
+  sj_collectionImplement.didSelectItemAtIndexPathBlock = ^(UICollectionView * _Nonnull collectionView, NSIndexPath * _Nonnull indexPath) {
     __strong typeof(wSelf) self = wSelf;
     if (self.sj_didSelectItemAtIndexPathBlock) {
       self.sj_didSelectItemAtIndexPathBlock(collectionView, indexPath);
@@ -113,6 +113,20 @@
     __strong typeof(wSelf) self = wSelf;
     if (self.sj_scrollViewDidScrollBlock) {
       self.sj_scrollViewDidScrollBlock(scrollView);
+    }
+  };
+  
+  sj_collectionImplement.willDisplayCellForItemAtIndexPathBlock = ^(UICollectionView * _Nonnull collectionView, UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+    __strong typeof(wSelf) self = wSelf;
+    if (self.sj_willDisplayCellForItemAtIndexPathBlock) {
+      self.sj_willDisplayCellForItemAtIndexPathBlock(collectionView, cell, indexPath);
+    }
+  };
+  
+  sj_collectionImplement.didEndDisplayingCellForItemAtIndexPathBlock = ^(UICollectionView * _Nonnull collectionView, UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+    __strong typeof(wSelf) self = wSelf;
+    if (self.sj_didEndDisplayingCellForItemAtIndexPathBlock) {
+      self.sj_didEndDisplayingCellForItemAtIndexPathBlock(collectionView, cell, indexPath);
     }
   };
   
@@ -150,6 +164,22 @@
 
 - (void)setSj_scrollViewDidScrollBlock:(void (^)(UIScrollView * _Nonnull))sj_scrollViewDidScrollBlock {
   objc_setAssociatedObject(self, @selector(sj_scrollViewDidScrollBlock), sj_scrollViewDidScrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)(UICollectionView * _Nonnull, UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_willDisplayCellForItemAtIndexPathBlock {
+  return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setSj_willDisplayCellForItemAtIndexPathBlock:(void (^)(UICollectionView * _Nonnull, UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_willDisplayCellForItemAtIndexPathBlock {
+  objc_setAssociatedObject(self, @selector(sj_willDisplayCellForItemAtIndexPathBlock), sj_willDisplayCellForItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)(UICollectionView * _Nonnull, UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_didEndDisplayingCellForItemAtIndexPathBlock {
+  return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setSj_didEndDisplayingCellForItemAtIndexPathBlock:(void (^)(UICollectionView * _Nonnull, UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_didEndDisplayingCellForItemAtIndexPathBlock {
+  objc_setAssociatedObject(self, @selector(sj_didEndDisplayingCellForItemAtIndexPathBlock), sj_didEndDisplayingCellForItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end

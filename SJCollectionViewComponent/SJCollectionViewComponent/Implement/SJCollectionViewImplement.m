@@ -163,8 +163,20 @@
     [(id<SJCollectionViewCellProtocol>)cell sj_didSelectedAtIndexPath:indexPath];
   }
   
-  if (self.didSelectItenAtIndexPathBlock) {
-    self.didSelectItenAtIndexPathBlock(collectionView, indexPath);
+  if (self.didSelectItemAtIndexPathBlock) {
+    self.didSelectItemAtIndexPathBlock(collectionView, indexPath);
+  }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.willDisplayCellForItemAtIndexPathBlock) {
+    self.willDisplayCellForItemAtIndexPathBlock(collectionView, cell, indexPath);
+  }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.didEndDisplayingCellForItemAtIndexPathBlock) {
+    self.didEndDisplayingCellForItemAtIndexPathBlock(collectionView, cell, indexPath);
   }
 }
 

@@ -6,7 +6,8 @@
 //  Copyright © 2020 SUNJUN. All rights reserved.
 //
 
-#import "SJCollectionViewCellProtocol.h"
+#import <Foundation/Foundation.h>
+@protocol SJCollectionViewCellProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
