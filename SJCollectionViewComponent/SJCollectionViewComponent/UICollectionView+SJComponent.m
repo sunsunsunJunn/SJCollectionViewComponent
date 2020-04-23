@@ -56,23 +56,14 @@
 }
 
 - (SJCollectionViewSection *)sj_firstSection {
-    if (self.sj_sectionArray.count > 0) {
-        return self.sj_sectionArray[0];
-    }
-    SJCollectionViewSection *section = [SJCollectionViewSection new];
-    [self.sj_sectionArray addObject:section];
-    return section;
+  if (self.sj_sectionArray.count > 0) {
+    return self.sj_sectionArray[0];
+  }
+  SJCollectionViewSection *section = [SJCollectionViewSection new];
+  [self.sj_sectionArray addObject:section];
+  return section;
 }
 
-- (id<SJCollectionViewCellModelProtocol>)cellModelForIndexPath:(NSIndexPath *)indexPath {
-  return [self.sj_collectionImplement cellModelForIndexPath:indexPath];
-}
-
-- (NSIndexPath *)indexPathForCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel {
-  return [self.sj_collectionImplement indexPathForCellModel:cellModel];
-}
-
-#pragma mark - getters & setters
 - (void)setSj_sectionArray:(NSMutableArray<SJCollectionViewSection *> * _Nonnull)sj_sectionArray {
   objc_setAssociatedObject(self, @selector(sj_sectionArray), sj_sectionArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -136,8 +127,8 @@
 - (SJCollectionViewImplement *)sj_collectionImplement {
   SJCollectionViewImplement *imp = objc_getAssociatedObject(self, _cmd);
   if (!imp) {
-      imp = [SJCollectionViewImplement new];
-      self.sj_collectionImplement = imp;
+    imp = [SJCollectionViewImplement new];
+    self.sj_collectionImplement = imp;
   }
   return imp;
 }
@@ -180,6 +171,14 @@
 
 - (void)setSj_didEndDisplayingCellForItemAtIndexPathBlock:(void (^)(UICollectionView * _Nonnull, UICollectionViewCell * _Nonnull, NSIndexPath * _Nonnull))sj_didEndDisplayingCellForItemAtIndexPathBlock {
   objc_setAssociatedObject(self, @selector(sj_didEndDisplayingCellForItemAtIndexPathBlock), sj_didEndDisplayingCellForItemAtIndexPathBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (id<SJCollectionViewCellModelProtocol>)cellModelForIndexPath:(NSIndexPath *)indexPath {
+  return [self.sj_collectionImplement cellModelForIndexPath:indexPath];
+}
+
+- (NSIndexPath *)indexPathForCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel {
+  return [self.sj_collectionImplement indexPathForCellModel:cellModel];
 }
 
 @end

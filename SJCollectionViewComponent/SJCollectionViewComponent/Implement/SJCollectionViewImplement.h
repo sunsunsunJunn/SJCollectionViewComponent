@@ -17,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface SJCollectionViewImplement : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-/** 数据源 */
+/**
+ * 数据源
+ */
 @property (nonatomic, strong) NSMutableArray<SJCollectionViewSection *> *sectionArray;
 
 /**

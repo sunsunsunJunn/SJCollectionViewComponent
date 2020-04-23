@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "SJCollectionViewComponent"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "UICollectionView组件,一个cellModel对应一个cell，用模型控制cell的显示"
   spec.homepage     = "https://github.com/sunsunsunJunn/SJCollectionViewComponent"
   spec.license      = { :type => "MIT", :file => "LICENSE" }

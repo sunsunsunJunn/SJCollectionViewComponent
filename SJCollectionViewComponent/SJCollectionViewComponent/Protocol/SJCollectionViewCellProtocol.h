@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * 传递数据给 cell (根据配置对象拿到数据更新UI)
+ *
  * @param cellModel 配置对象
  * @param indexPath indexPath
  */
@@ -28,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * 传递数据给 cell (根据配置对象拿到数据更新UI)
+ *
  * @param cellModel 配置对象
  */
 - (void)sj_configureCellWithCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel;
