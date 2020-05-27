@@ -58,7 +58,7 @@
       break;
     }
   }
-
+  
   return indexPath;
 }
 
@@ -69,12 +69,24 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return self.sectionArray[section].rowArray.count;
+  NSInteger itemNumber = 0;
+  if ([self validSection:section]) {
+    itemNumber = self.sectionArray[section].rowArray.count;
+  }
+  
+  return itemNumber;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  SJCollectionViewSection *sjSection = self.sectionArray[indexPath.section];
-  id<SJCollectionViewCellModelProtocol> cellModel = sjSection.rowArray[indexPath.row];
+  SJCollectionViewSection *sjSection;
+  if ([self validSection:indexPath.section]) {
+    sjSection = self.sectionArray[indexPath.section];
+  }
+  
+  id<SJCollectionViewCellModelProtocol> cellModel;
+  if ([self validItem:indexPath.item inSection:sjSection]) {
+    cellModel = sjSection.rowArray[indexPath.row];
+  }
   
   Class cellClass = [self validClassForCellModel:cellModel];
   NSString *identifier = [self reuseIdentifierForCellModel:cellModel];
@@ -82,9 +94,9 @@
   if (![_reuseCellSet containsObject:identifier]) {
     NSString *path = [[NSBundle mainBundle] pathForResource:NSStringFromClass(cellClass) ofType:@"nib"];
     if (path) {
-        [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil] forCellWithReuseIdentifier:identifier];
+      [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil] forCellWithReuseIdentifier:identifier];
     } else {
-        [collectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
+      [collectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
     }
     [_reuseCellSet addObject:identifier];
   }
@@ -111,31 +123,34 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  SJCollectionViewSection *sjSection = self.sectionArray[indexPath.section];
-
+  SJCollectionViewSection *sjSection;
+  if ([self validSection:indexPath.section]) {
+    sjSection = self.sectionArray[indexPath.section];
+  }
+  
   id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel;
   NSMutableSet *reuseSet;
   if (kind == UICollectionElementKindSectionHeader) {
-      headerFooterModel = sjSection.header;
-      reuseSet = _reuseHeaderSet;
+    headerFooterModel = sjSection.header;
+    reuseSet = _reuseHeaderSet;
   } else if (kind == UICollectionElementKindSectionFooter) {
-      headerFooterModel = sjSection.footer;
-      reuseSet = _reuseFooterSet;
+    headerFooterModel = sjSection.footer;
+    reuseSet = _reuseFooterSet;
   } else {
-      return nil;
+    return nil;
   }
   
   Class cls = [self validClassForHeaderFooterModel:headerFooterModel];
   NSString *identifier = [self reuseIdentifierForHeaderFooterModel:headerFooterModel];
   
   if (![reuseSet containsObject:identifier]) {
-      NSString *path = [[NSBundle mainBundle] pathForResource:NSStringFromClass(cls) ofType:@"nib"];
-      if (path) {
-          [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(cls) bundle:nil] forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
-      } else {
-          [collectionView registerClass:cls forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
-      }
-      [reuseSet addObject:identifier];
+    NSString *path = [[NSBundle mainBundle] pathForResource:NSStringFromClass(cls) ofType:@"nib"];
+    if (path) {
+      [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(cls) bundle:nil] forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
+    } else {
+      [collectionView registerClass:cls forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
+    }
+    [reuseSet addObject:identifier];
   }
   
   UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
@@ -183,48 +198,75 @@
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  SJCollectionViewSection *sjSection = self.sectionArray[indexPath.section];
-  id<SJCollectionViewCellModelProtocol> cellModel = sjSection.rowArray[indexPath.row];
-  
-  if ([cellModel respondsToSelector:@selector(sj_cellSize)] && !CGSizeEqualToSize(cellModel.sj_cellSize, CGSizeZero)) {
-    return [cellModel sj_cellSize];
+  CGSize itemSize = CGSizeZero;
+  if ([self validSection:indexPath.section]) {
+    SJCollectionViewSection *sjSection = self.sectionArray[indexPath.section];
+    
+    if ([self validItem:indexPath.item inSection:sjSection]) {
+      id<SJCollectionViewCellModelProtocol> cellModel = sjSection.rowArray[indexPath.row];
+      
+      if ([cellModel respondsToSelector:@selector(sj_cellSize)] && !CGSizeEqualToSize(cellModel.sj_cellSize, CGSizeZero)) {
+        itemSize = [cellModel sj_cellSize];
+      }
+    }
   }
   
-  return CGSizeZero;
+  return itemSize;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-  SJCollectionViewSection *sjSection = self.sectionArray[section];
-  id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel = sjSection.header;
-  
-  if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)] && !CGSizeEqualToSize(headerFooterModel.sj_headerFooterSize, CGSizeZero)) {
-    return [headerFooterModel sj_headerFooterSize];
+  CGSize headerSize = CGSizeZero;
+  if ([self validSection:section]) {
+    SJCollectionViewSection *sjSection = self.sectionArray[section];
+    id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel = sjSection.header;
+    
+    if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)] && !CGSizeEqualToSize(headerFooterModel.sj_headerFooterSize, CGSizeZero)) {
+      headerSize = [headerFooterModel sj_headerFooterSize];
+    }
   }
   
-  return CGSizeZero;
+  return headerSize;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-  SJCollectionViewSection *sjSection = self.sectionArray[section];
-  id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel = sjSection.footer;
-  
-  if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)]) {
-    return [headerFooterModel sj_headerFooterSize];
+  CGSize footerSize = CGSizeZero;
+  if ([self validSection:section]) {
+    SJCollectionViewSection *sjSection = self.sectionArray[section];
+    id<SJCollectionViewHeaderFooterModelProtocol> headerFooterModel = sjSection.footer;
+    
+    if ([headerFooterModel respondsToSelector:@selector(sj_headerFooterSize)]) {
+      footerSize = [headerFooterModel sj_headerFooterSize];
+    }
   }
   
-  return CGSizeZero;
+  return footerSize;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-  return self.sectionArray[section].minimumLineSpacing;
+  CGFloat minimumLineSpacing = 0.f;
+  if ([self validSection:section]) {
+    minimumLineSpacing = self.sectionArray[section].minimumLineSpacing;
+  }
+  
+  return minimumLineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-  return self.sectionArray[section].minimumInteritemSpacing;
+  CGFloat minimumInteritemSpacing = 0.f;
+  if ([self validSection:section]) {
+    minimumInteritemSpacing = self.sectionArray[section].minimumInteritemSpacing;
+  }
+  
+  return minimumInteritemSpacing;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-  return self.sectionArray[section].inset;
+  UIEdgeInsets inset = UIEdgeInsetsZero;
+  if ([self validSection:section]) {
+    inset = self.sectionArray[section].inset;
+  }
+  
+  return inset;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -237,12 +279,20 @@
 
 #pragma mark - Private Methods
 
+- (BOOL)validSection:(NSInteger)section {
+  return section < self.sectionArray.count;
+}
+
+- (BOOL)validItem:(NSInteger)item inSection:(SJCollectionViewSection *)section {
+  return item < section.rowArray.count;
+}
+
 - (Class)validClassForCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel {
-    return cellModel.sj_cellClass ?: UICollectionViewCell.self;
+  return cellModel.sj_cellClass ?: UICollectionViewCell.self;
 }
 
 - (Class)validClassForHeaderFooterModel:(id<SJCollectionViewHeaderFooterModelProtocol>)headerFooterModel {
-    return headerFooterModel.sj_headerFooterClass ?: UICollectionReusableView.self;
+  return headerFooterModel.sj_headerFooterClass ?: UICollectionReusableView.self;
 }
 
 - (NSString *)reuseIdentifierForCellModel:(id<SJCollectionViewCellModelProtocol>)cellModel {
@@ -266,10 +316,10 @@
 #pragma mark - getter
 
 - (NSMutableArray<SJCollectionViewSection *> *)sectionArray {
-    if (!_sectionArray) {
-        _sectionArray = [NSMutableArray array];
-    }
-    return _sectionArray;
+  if (!_sectionArray) {
+    _sectionArray = [NSMutableArray array];
+  }
+  return _sectionArray;
 }
 
 @end
